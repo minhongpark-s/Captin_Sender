@@ -53,10 +53,4 @@ def sendRequest(request):
     #receive_message_y = request.POST.get('y')
     receive_message_x = 10
     receive_message_y = 10
-    jsonData_raw= {
-        "robotPositionY" : int(receive_message_x),
-        "robotPositionX" : int(receive_message_y),
-        "checked_at" : datetime.now(),
-    }
-    jsonData=json.dumps(jsonData_raw)
-    return('127.0.0.1:8000/sender/'+receive_message_x+receive_message_y)
+    return redirect('127.0.0.1:8000/sender/'+receive_message_x+receive_message_y)
