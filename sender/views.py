@@ -53,4 +53,4 @@ def sendRequest(request):
     #receive_message_y = request.POST.get('y')
     receive_message_x = 10
     receive_message_y = 10
-    return redirect('127.0.0.1:8000/sender/'+receive_message_x+receive_message_y)
+    return redirect('127.0.0.1:8000/sender/'+str(receive_message_x)+str(receive_message_y))
