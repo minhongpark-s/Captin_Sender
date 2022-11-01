@@ -53,5 +53,6 @@ def sendRequest(request):
     #receive_message_y = request.POST.get('y')
     receive_message_x = 10
     receive_message_y = 10
-    return redirect("https://www.google.co.kr/search?q=%s")
+    return redirect("3.38.25.123/admin")
+    #return redirect("https://www.google.co.kr/search?q=%s")
     #return redirect('google.com'+str(receive_message_x)+str(receive_message_y))
