@@ -49,8 +49,10 @@ def ajax_method(request):
     return JsonResponse(send_message)
 
 def sendRequest(request):
-    receive_message_x = request.POST.get('x')
-    receive_message_y = request.POST.get('y')
+    #receive_message_x = request.POST.get('x')
+    #receive_message_y = request.POST.get('y')
+    receive_message_x = 10
+    receive_message_y = 10
     jsonData_raw= {
         "robotPositionY" : int(receive_message_x),
         "robotPositionX" : int(receive_message_y),
