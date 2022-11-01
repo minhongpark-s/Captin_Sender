@@ -24,4 +24,6 @@ urlpatterns = [
 
     path('updateDatabase/',views.updateDatabase),
     path('ajax_method/',views.ajax_method, name='ajax_method'),
+
+    path('sendRequest',views.sendRequest, name='sendRequest' ),
 ]

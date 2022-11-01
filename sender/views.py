@@ -6,6 +6,7 @@ from .models import robotData
 from datetime import datetime
 from datetime import timedelta
 
+import json
 from django.http import JsonResponse
 # for ajax request.
 from django.views.decorators.csrf import csrf_exempt
@@ -46,3 +47,14 @@ def ajax_method(request):
     receive_message = request.POST.get('x')
     send_message = {'send_data' : "I received "+receive_message}
     return JsonResponse(send_message)
+
+def sendRequest(request):
+    receive_message_x = request.POST.get('x')
+    receive_message_y = request.POST.get('y')
+    jsonData_raw= {
+        "robotPositionY" : int(receive_message_x),
+        "robotPositionX" : int(receive_message_y),
+        "checked_at" : datetime.now(),
+    }
+    jsonData=json.dumps(jsonData_raw)
+    return('127.0.0.1:8000/sender/'+receive_message_x+receive_message_y)
