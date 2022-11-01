@@ -35,7 +35,7 @@ ros.connect('ws://0.0.0.0:9090');
 
 function request_ajax(return_data_x, return_data_y){
     $.ajax({
-        url: '/dashboard/updateDatabase/',
+        url: '/sender/updateDatabase/',
         type: "POST",
         dataType: "JSON",
         data: {'x': return_data_x,'y' : return_data_y},

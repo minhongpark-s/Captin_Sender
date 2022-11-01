@@ -21,4 +21,7 @@ from . import views
 
 urlpatterns = [
     path('', views.sendData, name='sendData'),
+
+    path('updateDatabase/',views.updateDatabase),
+    path('ajax_method/',views.ajax_method, name='ajax_method'),
 ]
