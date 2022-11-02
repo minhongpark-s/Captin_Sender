@@ -53,7 +53,7 @@ def sendRequest(request):
     #receive_message_y = request.POST.get('y')
     receive_message_x = 10
     receive_message_y = 10
-    connect_url = "http://3.38.25.123/"
+    connect_url = "http://3.38.25.123/dashboard/"
     request_url = connect_url + str(receive_message_x) + str(receive_message_y)
     return redirect(request_url)
     #return redirect("http://3.38.25.123/admin")
