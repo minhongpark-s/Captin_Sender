@@ -29,10 +29,15 @@ ros.connect('ws://0.0.0.0:9090');
     /*if not using ajax, then use below code.
     createForm("updateDatabase",'GET','x',data,'y',data);
     */
+
+    /* for receiving side
     setTimeout(request_ajax(return_data, return_data),100);
+    */
+
+    setTimeout(sendDataToServer('http://3.38.25.123/dashboard/dataconnection', return_data, return_data),100);
   });
 
-
+/*
 function request_ajax(return_data_x, return_data_y){
     $.ajax({
         url: '/sender/updateDatabase/',
@@ -49,4 +54,20 @@ function request_ajax(return_data_x, return_data_y){
             console.log('i am failed');
         }
             });
+}
+*/
+
+function sendDataToServer(url_full, return_data_x, return_data_y){
+  $.ajax({
+    //url: 'http://3.38.25.123/dashboard/dataconnection',
+    url : url_full,
+    data: {
+      'x': return_data_x,
+      'y': return_data_y,
+    },
+    method: "POST",
+    dataType: "JSON" // 서버에 전송할 파일 형식
+  }).done((json) => {
+    console.log(json);
+  })
 }
