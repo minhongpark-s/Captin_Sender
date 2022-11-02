@@ -58,6 +58,9 @@ function request_ajax(return_data_x, return_data_y){
 */
 
 function sendDataToServer(url_full, return_data_x, return_data_y){
+  $.ajaxSetup({
+    data: {csrfmiddlewaretoken: '{{ csrf_token }}' },
+  });
   $.ajax({
     //url: 'http://3.38.25.123/dashboard/dataconnection',
     url : url_full,
@@ -66,7 +69,7 @@ function sendDataToServer(url_full, return_data_x, return_data_y){
       //'y': return_data_y,
       x : "return_data_x",
       y : "return_data_y",
-      csrfmiddlewaretoken: '{{ csrf_token }}',
+      //csrfmiddlewaretoken: '{{ csrf_token }}',
     },
     method: "POST",
     dataType: "JSON" // 서버에 전송할 파일 형식
