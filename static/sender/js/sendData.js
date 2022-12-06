@@ -1,5 +1,5 @@
 var ros = new ROSLIB.Ros();
- 
+
 // rosbridge websocket server와의 연결을 생성합니다.
 ros.connect('ws://0.0.0.0:9090');
 
@@ -14,6 +14,28 @@ ros.connect('ws://0.0.0.0:9090');
 
   ros.on('close', function() {
     console.log('Connection to websocket server closed.');
+  });
+
+  setTimeout(sendRequestToServer('http://3.38.25.123/dashboard/checkDeliveryRequest/'),100);
+
+  // service server에 대한 정보를 등록
+  var statusClient = new ROSLIB.Service({
+    ros : ros,
+    name : '/req_box',
+    serviceType : 'std_msgs/string'
+  });
+  // 보내려는 service request의 정보를 등록
+  var bool = new ROSLIB.ServiceRequest({
+    position : "112",
+    method : "1",
+  });
+  // 실제로 요청을 보냄
+  statusClient.callService(bool, function(result) {
+    console.log('Result for service call on '
+      + statusClient.name
+      + ': '
+      + result.status);
+    console.log('done')
   });
 
   var listener = new ROSLIB.Topic({
@@ -73,4 +95,39 @@ function sendDataToServer(url_full, return_data_x, return_data_y){
   }).done((json) => {
     console.log(json);
   })
+}
+
+
+function checkDelDataChange(url_){
+  $.ajax({
+    type: 'POST',
+    url: url,
+    data: "worktype=1&" + param,
+    async: false,
+    success: function(data) {
+        if(data != null) {
+              checkDelDataChange(url_)
+        }
+    }
+});
+}
+
+function sendRequestToServer(url_full){
+  $.ajax({
+    //url: 'http://3.38.25.123/dashboard/dataconnection',
+    url : url_full,
+    method: "GET",
+    dataType: "JSON" // 서버에 전송할 파일 형식
+  }).done((json, status) => {
+    console.log(json);
+    console.log(json.response1);
+    console.log(json.response1[0].status);
+    //console.log(json.response1.Object);
+    //console.log(json.Object);
+  });
+  //repeatVia(request)
+}
+
+function repeatVia(request){
+  setTimeout(sendRequestToServer('http://3.38.25.123/dashboard/dataconnection'),100)
 }
