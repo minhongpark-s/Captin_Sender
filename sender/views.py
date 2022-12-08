@@ -17,6 +17,24 @@ def sendData(request):
 		'sender/sendData.html',
 	)
 
+def receive(request):
+    return render(
+        request,
+        'sender/receive.html',
+    )
+
+def sendEnd(request):
+	return render(
+		request,
+		'sender/sendEnd.html',
+	)
+
+def sendStatus(request):
+	return render(
+		request,
+		'sender/sendStatus.html',
+	)
+
 @csrf_exempt
 def updateDatabase(request):
     if request.method == 'GET':

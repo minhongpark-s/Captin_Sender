@@ -20,7 +20,10 @@ from . import views
 
 
 urlpatterns = [
-    path('', views.sendData, name='sendData'),
+    path('sendData/', views.sendData, name='sendData'),
+    path('receive/', views.receive, name='receive'),
+    path('sendEnd/', views.sendEnd, name='sendEnd'),
+    path('sendStatus/', views.sendStatus, name='sendStatus'),
 
     path('updateDatabase/',views.updateDatabase),
     path('ajax_method/',views.ajax_method, name='ajax_method'),
