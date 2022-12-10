@@ -11,22 +11,22 @@ from django.http import JsonResponse
 # for ajax request.
 from django.views.decorators.csrf import csrf_exempt
 
-def sendData(request):
+def sendPosition(request):
 	return render(
 		request,
-		'sender/sendData.html',
+		'sender/sendPosition.html',
 	)
 
-def receive(request):
+def receiveRepeater(request):
     return render(
         request,
-        'sender/receive.html',
+        'sender/receiveRepeater.html',
     )
 
-def sendEnd(request):
+def sendRobotStatus(request):
 	return render(
 		request,
-		'sender/sendEnd.html',
+		'sender/sendRobotStatus.html',
 	)
 
 def sendStatus(request):

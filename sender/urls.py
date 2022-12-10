@@ -20,9 +20,9 @@ from . import views
 
 
 urlpatterns = [
-    path('sendData/', views.sendData, name='sendData'),
-    path('receive/', views.receive, name='receive'),
-    path('sendEnd/', views.sendEnd, name='sendEnd'),
+    path('sendPosition/', views.sendPosition, name='sendPosition'),
+    path('receiveRepeater/', views.receiveRepeater, name='receiveRepeater'),
+    path('sendRobotStatus/', views.sendRobotStatus, name='sendRobotStatus'),
     path('sendStatus/', views.sendStatus, name='sendStatus'),
 
     path('updateDatabase/',views.updateDatabase),

@@ -21,3 +21,4 @@ def receiveDeliveryRequest(request):
         '''
         send_message = {'send_data' : "I received "+ requestPosition + " and " + requestMethod + " time is "}
         return JsonResponse(send_message)
+
