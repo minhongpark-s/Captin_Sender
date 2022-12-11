@@ -26,7 +26,7 @@ ros.connect('ws://0.0.0.0:9090');
   // listenser가 들을 publisher의 정보 등록
   var listener = new ROSLIB.Topic({
     ros : ros,
-    name : 'robotStatus',
+    name : 'robot2app',
     messageType : 'std_msgs/String'
   });
   // listener가 subscribe하면 다음 코드 실행

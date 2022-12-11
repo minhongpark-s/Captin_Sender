@@ -25,7 +25,7 @@ ros.on('close', function() {
 // service server에 대한 정보를 등록
 var statusClient_ = new ROSLIB.Service({
     ros : ros,
-    name : '/service_test',
+    name : 'Appdata',
     serviceType : 'std_msgs/string'
 });
 
@@ -67,12 +67,12 @@ function sendRequestToServer(url_full){
             + statusClient_.name
             + ': '
             + result.output);
-            if(result.output == "ok"){
+            if(result.response == "ok"){
                 console.log("ros service response 'ok'")
                 setTimeout(changeFalseToMoving(json.response1[0].nowTime),1000);
                 setTimeout(checkLoadedData(),1);
             }
-            else if(result.output == "failed"){
+            else if(result.response == "failed"){
                 console.log("ros service response 'failed'")
                 sendRequestToServer('http://3.38.25.123/dashboard/checkDeliveryRequest/')
             }

@@ -17,38 +17,25 @@ ros.connect('ws://0.0.0.0:9090');
     console.log('Connection to websocket server closed.');
   });
 
-  // service server에 대한 정보를 등록
-  var statusClient = new ROSLIB.Service({
-    ros : ros,
-    name : '/req_box',
-    serviceType : 'std_msgs/string'
-  });
-  // 보내려는 service request의 정보를 등록
-  var bool = new ROSLIB.ServiceRequest({
-    position : "112",
-    method : "1",
-  });
-  // service 요청을 보냄
-  statusClient.callService(bool, function(result) {
-    console.log('Result for service call on '
-      + statusClient.name
-      + ': '
-      + result.status);
-    console.log('done')
-  });
-
-
   // listenser가 들을 publisher의 정보 등록
   var listener = new ROSLIB.Topic({
     ros : ros,
-    name : '/test/topic',
-    messageType : 'std_msgs/Int16'
+    name : '/amcl_pose',
+    messageType : 'geometry_msgs/PoseWithCovarianceStamped'
+    //messageType : 'geometry_msgs/Point'
   });
   // listener가 subscribe하면 다음 코드 실행
   listener.subscribe(function(message) {
-    console.log('Received message on ' + listener.name + ': ' + message.data);
+    scaledX = Math.ceil(message.pose.pose.position.x)
+    scaledY = Math.ceil(message.pose.pose.position.y)
+    console.log('Received data on ' + listener.name)
+    //console.log('Received data on ' + listener.name + ': ' +(message.pose.pose.position.x.toFixed(1)) + ',' + (message.pose.pose.position.y.toFixed(1)));
     //listener.unsubscribe(); // unsubcribe topic node.
-    return_data = message.data;
+    return_data_x = message.pose.pose.position.x.toFixed(1);
+    return_data_y = message.pose.pose.position.y.toFixed(1);
+    //console.log(message)
+    console.log("raw data x: " + message.pose.pose.position.x)
+    console.log("raw data y: " + message.pose.pose.position.y)
     /*if not using ajax, then use below code.
     createForm("updateDatabase",'GET','x',data,'y',data);
     */
