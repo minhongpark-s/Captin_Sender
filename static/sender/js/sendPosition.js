@@ -45,7 +45,7 @@ ros.connect('ws://0.0.0.0:9090');
     */
 
     //서버로 데이터를 전송함.
-    setTimeout(sendDataToServer('http://3.38.25.123/dashboard/dataconnection', return_data, return_data),100);
+    setTimeout(sendDataToServer('http://3.38.25.123/dashboard/dataconnection', return_data_x, return_data_y),100);
   });
 
 /*
