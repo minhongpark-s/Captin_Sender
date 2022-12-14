@@ -32,7 +32,7 @@ var statusClient_ = new ROSLIB.Service({
 var toRobot = new ROSLIB.Topic({
      ros : ros,
      name : 'Sub_App',
-     messageType : 'std_msgs/string'
+     messageType : 'std_msgs/String'
    });
 
 setTimeout(sendRequestToServer('http://3.38.25.123/dashboard/checkDeliveryRequest/'),10000);
